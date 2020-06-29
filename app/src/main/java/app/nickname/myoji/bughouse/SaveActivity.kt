@@ -11,10 +11,10 @@ class SaveActivity : AppCompatActivity() {
         setContentView(R.layout.activity_load)
     }
 
-    val sharedPreferences = getSharedPreferences("Second", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    saveButton.setOnClickListener {
-        val text = input.text
-        editor.putString("SAVE", text)
-    }
+   // val sharedPreferences = getSharedPreferences("Second", Context.MODE_PRIVATE)
+//    val editor = sharedPreferences.edit()
+//    saveButton.setOnClickListener {
+//        val text = input.text
+//        editor.putString("SAVE", text)
+//    }
 }
