@@ -17,24 +17,29 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        val adapter = TaskAdapter(this, object: TaskAdapter.ItemClickListener{
-            override fun onItemClick(position: Int) {
-                val intent = Intent(this@ListActivity, DetailActivity::class.java)
-                intent.putExtra("TASK_NAME", taskList[position].name)
+        val adapter = TaskAdapter(this, object : TaskAdapter.ItemClickListener {
+            override fun onItemClick(position: Task) {
+
+                val intent = Intent(this@ListActivity,DetailActivity::class.java)
+                intent.putExtra("TODO_NAME", position.name)
+                startActivity(intent)
             }
+
         })
+
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
         adapter.addAll(taskList)
 
         addButton.setOnClickListener {
-            var name = editText.text.toString()
+            var name: String = editText.text.toString()
+            save(name)
             //taskList.add(Task(name))
-            adapter.addAll(taskList)
+            val nameTask = Task(name)
+            adapter.add(nameTask)
+
         }
-
     }
-
-
+    fun save(name: String) {}
 }

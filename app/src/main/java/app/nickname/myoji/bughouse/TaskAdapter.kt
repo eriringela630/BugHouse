@@ -26,7 +26,7 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.nameTextView.setOnClickListener {
-            itemClickListener.onItemClick(position)
+            itemClickListener.onItemClick(item)
         }
         holder.nameTextView.text = item.name
 
@@ -36,6 +36,10 @@ class TaskAdapter(
         this.items.addAll(items)
         notifyDataSetChanged()
     }
+    fun add(items: Task){
+        this.items.add(items)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val container: View = view.findViewById(R.id.container)
@@ -43,6 +47,6 @@ class TaskAdapter(
     }
 
     interface ItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Task)
     }
 }
