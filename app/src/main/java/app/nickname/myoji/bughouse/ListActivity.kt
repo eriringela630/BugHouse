@@ -32,13 +32,10 @@ class ListActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         adapter.addAll(taskList)
 
-//        fun toTask(name:Task) {
-//            val addname: Task = name
-//        }
 
         addButton.setOnClickListener {
             val name: String = editText.text.toString()
-            val todoname:Task = toTask(addname)
+            val todoname:Task = toTask(name)
             save(todoname)
             adapter.add(todoname)
 
@@ -46,14 +43,10 @@ class ListActivity : AppCompatActivity() {
 
 
     }
-
-
-    fun toTask(name:String) Task {
-            val addname: Task = Task(name)
-            return addname
+    fun toTask(name:String) : Task {
+        val addname: Task = Task(name)
+        return addname
     }
-
-
     fun save(name: Task) {
 
     }
