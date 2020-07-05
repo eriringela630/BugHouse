@@ -36,9 +36,9 @@ class TaskAdapter(
         this.items.addAll(items)
         notifyDataSetChanged()
     }
-//    //add buttonを押したときに書いた文字だけを追加する関数
-    fun add(items: Task){
-        this.items.add(items)
+    //add buttonを押したときに書いた文字だけを追加する関数
+    fun add(todoname: Task){
+        this.items.add(todoname)
         notifyDataSetChanged()
     }
 

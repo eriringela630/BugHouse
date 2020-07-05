@@ -40,15 +40,20 @@ class ListActivity : AppCompatActivity() {
             val name: String = editText.text.toString()
             val todoname:Task = toTask(addname)
             save(todoname)
-            //val nameTask = Task(name)
             adapter.add(todoname)
 
         }
 
+
     }
-    fun toTask(name:Task){
-        val addname: Task = name
+
+
+    fun toTask(name:String) Task {
+            val addname: Task = Task(name)
+            return addname
     }
+
+
     fun save(name: Task) {
 
     }
