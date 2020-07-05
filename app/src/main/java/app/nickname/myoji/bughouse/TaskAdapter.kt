@@ -26,21 +26,22 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.nameTextView.setOnClickListener {
-            itemClickListener.onItemClick(item)
+            itemClickListener.onItemClick(position)
         }
         holder.nameTextView.text = item.name
 
     }
-
+    //これは最初からList<Task>をrecyclerviewに追加するための関数
     fun addAll(items: List<Task>) {
         this.items.addAll(items)
         notifyDataSetChanged()
     }
-    //addbuttonを押したときに書いた文字だけを追加する関数
+//    //add buttonを押したときに書いた文字だけを追加する関数
     fun add(items: Task){
         this.items.add(items)
         notifyDataSetChanged()
     }
+
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val container: View = view.findViewById(R.id.container)
@@ -48,7 +49,7 @@ class TaskAdapter(
     }
 
     interface ItemClickListener {
-        fun onItemClick(position: Task)
+        fun onItemClick(position: Int)
 
     }
 }

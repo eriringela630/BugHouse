@@ -18,11 +18,10 @@ class ListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list)
 
         val adapter = TaskAdapter(this, object : TaskAdapter.ItemClickListener {
-            // Listに追加できるのはTask型だから引数の型をTask型にする
-            override fun onItemClick(position: Task) {
+            override fun onItemClick(position: Int) {
 
                 val intent = Intent(this@ListActivity,DetailActivity::class.java)
-                intent.putExtra("TODO_NAME", position.name)
+                intent.putExtra("TODO_NAME", taskList[position].name)
                 startActivity(intent)
             }
 
@@ -33,15 +32,24 @@ class ListActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         adapter.addAll(taskList)
 
+//        fun toTask(name:Task) {
+//            val addname: Task = name
+//        }
+
         addButton.setOnClickListener {
-            var name: String = editText.text.toString()
-            save(name)
-            val nameTask = Task(name)
-            //taskadapterで作った関数addでadapterに変数nametaskを追加する
-            adapter.add(nameTask)
+            val name: String = editText.text.toString()
+            val todoname:Task = toTask(addname)
+            save(todoname)
+            //val nameTask = Task(name)
+            adapter.add(todoname)
 
         }
+
     }
-    //task adapterに書き込んだ文字を入れるためsaveする
-    fun save(name: String) {}
+    fun toTask(name:Task){
+        val addname: Task = name
+    }
+    fun save(name: Task) {
+
+    }
 }
