@@ -36,6 +36,7 @@ class TaskAdapter(
         this.items.addAll(items)
         notifyDataSetChanged()
     }
+    //addbuttonを押したときに書いた文字だけを追加する関数
     fun add(items: Task){
         this.items.add(items)
         notifyDataSetChanged()
@@ -48,5 +49,6 @@ class TaskAdapter(
 
     interface ItemClickListener {
         fun onItemClick(position: Task)
+
     }
 }

@@ -18,6 +18,7 @@ class ListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list)
 
         val adapter = TaskAdapter(this, object : TaskAdapter.ItemClickListener {
+            // Listに追加できるのはTask型だから引数の型をTask型にする
             override fun onItemClick(position: Task) {
 
                 val intent = Intent(this@ListActivity,DetailActivity::class.java)
@@ -35,11 +36,12 @@ class ListActivity : AppCompatActivity() {
         addButton.setOnClickListener {
             var name: String = editText.text.toString()
             save(name)
-            //taskList.add(Task(name))
             val nameTask = Task(name)
+            //taskadapterで作った関数addでadapterに変数nametaskを追加する
             adapter.add(nameTask)
 
         }
     }
+    //task adapterに書き込んだ文字を入れるためsaveする
     fun save(name: String) {}
 }
